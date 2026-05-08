@@ -4,25 +4,25 @@ AOS.init({ once: true, duration: 800 });
 // ========== DATA LAPORAN (Icon & Judul saja, dengan detail tersimpan) ==========
 const reportsData = {
     daily: [
-        { id: 'daily1', title: 'Line bar', icon: 'fa-chart-line', detail: 'Laporan Line Bar: Menampilkan grafik penjualan per jam, item terlaris, dan performa shift.' },
-        { id: 'daily2', title: 'LOGBOOK', icon: 'fa-book', detail: 'LOGBOOK Harian: Catatan kejadian operasional, masalah, dan solusi dari tim restoran.' },
-        { id: 'daily3', title: 'BRIEFING', icon: 'fa-users', detail: 'BRIEFING: Ringkasan arahan pagi, target harian, dan menu spesial hari ini.' },
-        { id: 'daily4', title: 'TCMH', icon: 'fa-clipboard-list', detail: 'TCMH (Team Customer Morning Huddle): Evaluasi layanan pelanggan dan keluhan.' },
-        { id: 'daily5', title: 'BINCARD', icon: 'fa-id-card', detail: 'BINCARD: Kartu inspeksi kebersihan dan kelayakan area dapur & ruang makan.' },
-        { id: 'daily6', title: 'MONITORING suhu', icon: 'fa-temperature-high', detail: 'Monitoring Suhu: Pengecekan suhu kulkas, freezer, dan ruang penyimpanan bahan baku.' }
+        { id: 'daily1', title: 'Line bar', icon: 'fa-chart-line', href: 'select_linebar', detail: 'Laporan Line Bar: Menampilkan grafik penjualan per jam, item terlaris, dan performa shift.' },
+        { id: 'daily2', title: 'LOGBOOK', icon: 'fa-book', href: 'https://example.com/logbook', detail: 'LOGBOOK Harian: Catatan kejadian operasional, masalah, dan solusi dari tim restoran.' },
+        { id: 'daily3', title: 'BRIEFING', icon: 'fa-users', href: 'https://example.com/briefing', detail: 'BRIEFING: Ringkasan arahan pagi, target harian, dan menu spesial hari ini.' },
+        { id: 'daily4', title: 'TCMH', icon: 'fa-clipboard-list', href: 'https://example.com/tcmh', detail: 'TCMH (Team Customer Morning Huddle): Evaluasi layanan pelanggan dan keluhan.' },
+        { id: 'daily5', title: 'BINCARD', icon: 'fa-id-card', href: 'https://example.com/bincard', detail: 'BINCARD: Kartu inspeksi kebersihan dan kelayakan area dapur & ruang makan.' },
+        { id: 'daily6', title: 'MONITORING suhu', icon: 'fa-temperature-high', href: 'https://example.com/monitoring-suhu', detail: 'Monitoring Suhu: Pengecekan suhu kulkas, freezer, dan ruang penyimpanan bahan baku.' }
     ],
     weekly: [
-        { id: 'weekly1', title: 'Traffic count', icon: 'fa-chart-simple', detail: 'Traffic Count: Jumlah pengunjung per hari dalam seminggu, tren kenaikan/penurunan.' },
-        { id: 'weekly2', title: 'Fix order', icon: 'fa-truck', detail: 'Fix Order: Pemesanan tetap bahan baku mingguan dari supplier utama.' },
-        { id: 'weekly3', title: 'Line bar schedule', icon: 'fa-calendar-alt', detail: 'Line bar Schedule: Jadwal shift bartender dan staf bar untuk minggu ini.' }
+        { id: 'weekly1', title: 'Traffic count', icon: 'fa-chart-simple', href: 'https://example.com/traffic-count', detail: 'Traffic Count: Jumlah pengunjung per hari dalam seminggu, tren kenaikan/penurunan.' },
+        { id: 'weekly2', title: 'Fix order', icon: 'fa-truck', href: 'https://example.com/fix-order', detail: 'Fix Order: Pemesanan tetap bahan baku mingguan dari supplier utama.' },
+        { id: 'weekly3', title: 'Line bar schedule', icon: 'fa-calendar-alt', href: 'https://example.com/linebar-schedule', detail: 'Line bar Schedule: Jadwal shift bartender dan staf bar untuk minggu ini.' }
     ],
     monthly: [
-        { id: 'monthly1', title: 'PNL', icon: 'fa-chart-pie', detail: 'PNL (Profit & Loss): Laporan laba rugi bulanan, pendapatan vs pengeluaran.' },
-        { id: 'monthly2', title: 'SDM', icon: 'fa-user-tie', detail: 'SDM: Laporan kehadiran karyawan, performa tim, dan rencana pelatihan bulan depan.' }
+        { id: 'monthly1', title: 'PNL', icon: 'fa-chart-pie', href: 'https://example.com/pnl', detail: 'PNL (Profit & Loss): Laporan laba rugi bulanan, pendapatan vs pengeluaran.' },
+        { id: 'monthly2', title: 'SDM', icon: 'fa-user-tie', href: 'https://example.com/sdm', detail: 'SDM: Laporan kehadiran karyawan, performa tim, dan rencana pelatihan bulan depan.' }
     ],
     insidental: [
-        { id: 'insidental1', title: 'Target', icon: 'fa-bullseye', detail: 'Target: Pencapaian target bulanan vs realisasi, analisis gap dan strategi.' },
-        { id: 'insidental2', title: 'Bisnis plan', icon: 'fa-chart-line', detail: 'Bisnis Plan: Rencana pengembangan restoran, ekspansi, dan inovasi menu.' }
+        { id: 'insidental1', title: 'Target', icon: 'fa-bullseye', href: 'https://example.com/target', detail: 'Target: Pencapaian target bulanan vs realisasi, analisis gap dan strategi.' },
+        { id: 'insidental2', title: 'Bisnis plan', icon: 'fa-chart-line', href: 'https://example.com/bisnis-plan', detail: 'Bisnis Plan: Rencana pengembangan restoran, ekspansi, dan inovasi menu.' }
     ]
 };
 
@@ -48,16 +48,17 @@ function renderGrid(category) {
     
     const reports = reportsData[category];
     if(!reports || reports.length === 0) {
-        container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px;">Tidak ada laporan</div>`;
+        container.innerHTML = <div style="grid-column:1/-1; text-align:center; padding:40px;">Tidak ada laporan</div>;
         return;
     }
     
     container.innerHTML = '';
     reports.forEach(report => {
         const gridItem = document.createElement('div');
-        gridItem.className = `grid-item ${activeReportId === report.id ? 'active-laporan' : ''}`;
+        gridItem.className = grid-item ${activeReportId === report.id ? 'active-laporan' : ''};
         gridItem.setAttribute('data-id', report.id);
         gridItem.setAttribute('data-category', category);
+        gridItem.setAttribute('data-href', report.href || '#');
         
         // Pilih warna icon berdasarkan kategori
         let iconColor = '#e67e22';
@@ -73,7 +74,11 @@ function renderGrid(category) {
             <div class="grid-title">${escapeHtml(report.title)}</div>
         `;
         
-        gridItem.addEventListener('click', () => {
+        // Handler klik pada grid item (seluruh area)
+        gridItem.addEventListener('click', (e) => {
+            // Cegah jika yang di-klik adalah icon link (akan ditangani terpisah)
+            if(e.target.closest('.grid-icon-link')) return;
+            
             // Hapus active class dari semua grid item
             document.querySelectorAll('.grid-item').forEach(item => {
                 item.classList.remove('active-laporan');
@@ -115,6 +120,7 @@ function showDetail(report, category) {
             </div>
             <div class="detail-meta">
                 <span><i class="fas fa-clock"></i> Terakhir diperbarui: ${new Date().toLocaleDateString('id-ID')}</span>
+                ${report.href ? <span style="margin-left: 15px;"><i class="fas fa-external-link-alt"></i> <a href="${report.href}" target="_blank" class="detail-link" onclick="event.stopPropagation()">Buka Laporan Lengkap</a></span> : ''}
             </div>
         </div>
     `;
@@ -163,7 +169,7 @@ function showToast(message) {
     if(existingToast) existingToast.remove();
     const toast = document.createElement('div');
     toast.className = 'toast-msg';
-    toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+    toast.innerHTML = <i class="fas fa-info-circle"></i> ${message};
     document.body.appendChild(toast);
     setTimeout(() => {
         toast.style.opacity = '0';
@@ -176,8 +182,42 @@ function updateLiveDate() {
     const now = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const formatted = now.toLocaleDateString('id-ID', options);
-    document.getElementById('liveDate').innerHTML = `<i class="far fa-clock"></i> ${formatted}`;
+    document.getElementById('liveDate').innerHTML = <i class="far fa-clock"></i> ${formatted};
 }
+
+// Fungsi untuk membuka href (bisa dipanggil dari event handler)
+function openReportHref(href, reportTitle) {
+    if(href && href !== '#') {
+        showToast(🔄 Membuka laporan "${reportTitle}"...);
+        // Buka di tab baru untuk pengalaman yang lebih baik
+        window.open(href, '_blank');
+    } else {
+        showToast(⚠️ Laporan "${reportTitle}" belum memiliki href.);
+    }
+}
+
+// Event listener untuk menangkap klik pada icon di grid item
+document.addEventListener('click', function(e) {
+    // Cari apakah yang diklik adalah icon atau berada dalam grid-icon
+    const iconElement = e.target.closest('.grid-icon');
+    if(iconElement) {
+        e.stopPropagation();
+        const gridItem = iconElement.closest('.grid-item');
+        if(gridItem) {
+            const reportId = gridItem.getAttribute('data-id');
+            const category = gridItem.getAttribute('data-category');
+            if(reportId && category && reportsData[category]) {
+                const report = reportsData[category].find(r => r.id === reportId);
+                if(report && report.href) {
+                    showToast(🔗 Membuka ${report.title}...);
+                    window.open(report.href, '_blank');
+                } else if(report) {
+                    showToast(🔒 Laporan ${report.title} belum memiliki href.);
+                }
+            }
+        }
+    }
+});
 
 // Event listeners untuk kategori
 document.getElementById('catDaily').addEventListener('click', () => setActiveCategory('daily'));
@@ -203,3 +243,50 @@ if(chefDiv){
 
 // Tampilkan selamat datang
 showToast('🍽️ Selamat datang di RestoDash!');
+
+// Tambahkan CSS untuk efek hover pada icon
+const style = document.createElement('style');
+style.textContent = `
+    .grid-item {
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+    }
+    .grid-icon {
+        transition: transform 0.2s ease, color 0.2s ease;
+        cursor: pointer;
+    }
+    .grid-icon:hover {
+        transform: scale(1.15);
+        filter: drop-shadow(0 0 4px currentColor);
+    }
+    .grid-link-icon {
+        position: absolute;
+        bottom: 8px;
+        right: 12px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        cursor: pointer;
+        color: #3498db;
+        font-size: 0.8rem;
+        background: rgba(255,255,255,0.8);
+        border-radius: 20px;
+        padding: 4px 8px;
+    }
+    .grid-item:hover .grid-link-icon {
+        opacity: 1;
+    }
+    .grid-link-icon:hover {
+        color: #2980b9;
+        transform: scale(1.1);
+    }
+    .detail-link {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .detail-link:hover {
+        text-decoration: underline;
+    }
+`;
+document.head.appendChild(style);
