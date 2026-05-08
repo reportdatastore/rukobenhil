@@ -4,7 +4,7 @@ AOS.init({ once: true, duration: 800 });
 // ========== DATA LAPORAN (Icon & Judul saja, dengan detail tersimpan) ==========
 const reportsData = {
     daily: [
-        { id: 'daily1', title: 'Line bar', icon: 'fa-chart-line', href: 'select_linebar', detail: 'Laporan Line Bar: Menampilkan grafik penjualan per jam, item terlaris, dan performa shift.' },
+        { id: 'daily1', title: 'Line bar', icon: 'fa-chart-line', href: 'select_linebar.html', detail: 'Laporan Line Bar: Menampilkan grafik penjualan per jam, item terlaris, dan performa shift.' },
         { id: 'daily2', title: 'LOGBOOK', icon: 'fa-book', href: 'https://example.com/logbook', detail: 'LOGBOOK Harian: Catatan kejadian operasional, masalah, dan solusi dari tim restoran.' },
         { id: 'daily3', title: 'BRIEFING', icon: 'fa-users', href: 'https://example.com/briefing', detail: 'BRIEFING: Ringkasan arahan pagi, target harian, dan menu spesial hari ini.' },
         { id: 'daily4', title: 'TCMH', icon: 'fa-clipboard-list', href: 'https://example.com/tcmh', detail: 'TCMH (Team Customer Morning Huddle): Evaluasi layanan pelanggan dan keluhan.' },
